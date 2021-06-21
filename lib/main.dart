@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import './models/card.dart' as c45;
+import './models/hand.dart';
+import './widgets/hand.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -35,8 +39,24 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _selectionHandler() {
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    var hand1 = Hand();
+    hand1.dealCard(c45.Card(c45.Ordinal.ACE, c45.Suit.CLUBS));
+    hand1.dealCard(c45.Card(c45.Ordinal.TWO, c45.Suit.CLUBS));
+    hand1.dealCard(c45.Card(c45.Ordinal.THREE, c45.Suit.CLUBS));
+    hand1.dealCard(c45.Card(c45.Ordinal.FOUR, c45.Suit.CLUBS));
+    var hand2 = Hand();
+    hand2.dealCard(c45.Card(c45.Ordinal.ACE, c45.Suit.DIAMONDS));
+    hand2.dealCard(c45.Card(c45.Ordinal.TWO, c45.Suit.DIAMONDS));
+    hand2.dealCard(c45.Card(c45.Ordinal.THREE, c45.Suit.DIAMONDS));
+    hand2.dealCard(c45.Card(c45.Ordinal.FOUR, c45.Suit.DIAMONDS));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -45,12 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-                  height: 200,
-                  child: Image.asset(
-                    'assets/images/cards/QH.jpg',
-                    fit: BoxFit.cover,
-                  )),
+            HandWidget(hand1, _selectionHandler),
+            HandWidget(hand2, _selectionHandler),
             Text(
               'TRACER count:',
             ),
