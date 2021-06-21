@@ -12,9 +12,9 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-                  height: 200,
+                  height: 100,
                   child: Image.asset(
-                    'assets/images/cards/QH.jpg',
+                    _card.imageURL,
                     fit: BoxFit.cover,
                   ));
   }

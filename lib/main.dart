@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './models/card.dart' as c45;
 import './models/hand.dart';
 import './widgets/hand.dart';
+import './widgets/card.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,14 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var hand1 = Hand();
     hand1.dealCard(c45.Card(c45.Ordinal.ACE, c45.Suit.CLUBS));
-    hand1.dealCard(c45.Card(c45.Ordinal.TWO, c45.Suit.CLUBS));
-    hand1.dealCard(c45.Card(c45.Ordinal.THREE, c45.Suit.CLUBS));
-    hand1.dealCard(c45.Card(c45.Ordinal.FOUR, c45.Suit.CLUBS));
+    hand1.dealCard(c45.Card(c45.Ordinal.TWO, c45.Suit.DIAMONDS));
+    hand1.dealCard(c45.Card(c45.Ordinal.THREE, c45.Suit.HEARTS));
+    hand1.dealCard(c45.Card(c45.Ordinal.FOUR, c45.Suit.SPADES));
+    hand1.dealCard(c45.Card(c45.Ordinal.FIVE, c45.Suit.CLUBS));
     var hand2 = Hand();
     hand2.dealCard(c45.Card(c45.Ordinal.ACE, c45.Suit.DIAMONDS));
     hand2.dealCard(c45.Card(c45.Ordinal.TWO, c45.Suit.DIAMONDS));
     hand2.dealCard(c45.Card(c45.Ordinal.THREE, c45.Suit.DIAMONDS));
     hand2.dealCard(c45.Card(c45.Ordinal.FOUR, c45.Suit.DIAMONDS));
+    hand2.dealCard(c45.Card(c45.Ordinal.TEN, c45.Suit.SPADES));
+    var card = CardWidget(c45.Card(c45.Ordinal.FOUR, c45.Suit.DIAMONDS), _selectionHandler, true);
 
     return Scaffold(
       appBar: AppBar(
@@ -65,15 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('action:',),
             HandWidget(hand1, _selectionHandler),
+            Text('computer:',),
             HandWidget(hand2, _selectionHandler),
-            Text(
-              'TRACER count:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Text('your hand:',),
+            HandWidget(hand2, _selectionHandler),
           ],
         ),
       ),
